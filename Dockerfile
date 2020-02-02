@@ -5,6 +5,7 @@ RUN addgroup -S app && adduser -S -G app app
 RUN apk add --no-cache \
     sqlite \
     busybox-suid \
+    zip \
     su-exec && pip install exoscale
 
 ENV DB_FILE /data/db.sqlite3
