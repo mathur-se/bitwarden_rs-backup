@@ -16,6 +16,7 @@ fi
 if [ $? -eq 0 ] 
 then 
   echo "$(date "+%F %T") - Backup successfull, Uploading to Exoscale..."
+  zip --encrypt -P $(cat /run/secrets/sqlite_encryptionpw) database.zip $FINAL_BACKUP_FILE
   python upload.py
   if [ $? -eq 0 ]
   then 
