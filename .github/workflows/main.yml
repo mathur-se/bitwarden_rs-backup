@@ -16,7 +16,7 @@ jobs:
    push:
     env:
        IMAGE_NAME : bitwardenbackup 
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     if: github.event_name == 'push'
 
     steps:
