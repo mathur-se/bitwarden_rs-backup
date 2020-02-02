@@ -13,7 +13,9 @@ on:
   # Run tests for any PRs.
   pull_request:
 jobs:
-  push:
+   push:
+    env:
+       IMAGE_NAME : bitwardenbackup 
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
 
