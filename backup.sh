@@ -15,7 +15,9 @@ fi
 /usr/bin/sqlite3 $DB_FILE ".backup $FINAL_BACKUP_FILE"
 if [ $? -eq 0 ] 
 then 
-  echo "$(date "+%F %T") - Backup successfull"
+  echo "$(date "+%F %T") - Backup successfull, Uploading to Exoscale..."
+  python backup.py
+  if [ $? -eq 0 ] then echo "$(date "+%F %T") - Upload to Exoscale Successful."; else echo "Upload to Exoscale Failed."; fi
 else
   echo "$(date "+%F %T") - Backup unsuccessfull"
 fi
