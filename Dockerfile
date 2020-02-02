@@ -1,11 +1,11 @@
-FROM alpine:latest
+FROM python:3.8.1-alpine
 
 RUN addgroup -S app && adduser -S -G app app
 
 RUN apk add --no-cache \
     sqlite \
     busybox-suid \
-    su-exec
+    su-exec && pip install exoscale
 
 ENV DB_FILE /data/db.sqlite3
 ENV BACKUP_FILE /data/db_backup/backup.sqlite3
