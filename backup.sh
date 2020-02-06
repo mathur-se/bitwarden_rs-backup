@@ -9,6 +9,7 @@ if [ $TIMESTAMP = true ]
 then
   FINAL_BACKUP_FILE="$(echo "$BACKUP_FILE")_$(date "+%F-%H%M%S")"
 else
+  rm $BACKUP_FILE
   FINAL_BACKUP_FILE=$BACKUP_FILE
 fi
 
