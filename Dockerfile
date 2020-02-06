@@ -11,7 +11,7 @@ RUN apk add --no-cache \
 ENV DB_FILE /data/db.sqlite3
 ENV BACKUP_FILE /data/db_backup/backup.sqlite3
 ENV CRON_TIME "0 5 * * *"
-ENV TIMESTAMP false
+ENV TIMESTAMP true
 ENV UID 100
 ENV GID 100
 ENV CRONFILE /etc/crontabs/root
