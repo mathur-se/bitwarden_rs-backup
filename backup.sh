@@ -16,7 +16,8 @@ fi
 if [ $? -eq 0 ] 
 then 
   echo "$(date "+%F %T") - Backup successfull, Uploading to Exoscale..."
-  zip --encrypt -P $(cat /run/secrets/sqlite_encryptionpw) database.zip $FINAL_BACKUP_FILE
+  gpg --symmetric --pinentry-mode=loopback --passphrase-file /run/secrets/sqlite_encryptionpw --cipher-algo AES256 $FINAL_BACKUP_FILE
+  tar -czvf bitwardenbackup.tar.gz "$FINAL_BACKUP_FILE.gpg"
   python upload.py
   if [ $? -eq 0 ]
   then 
