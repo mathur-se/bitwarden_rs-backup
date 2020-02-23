@@ -19,6 +19,7 @@ then
   gpg --symmetric --pinentry-mode=loopback --passphrase-file /run/secrets/sqlite_encryptionpw --cipher-algo AES256 $FINAL_BACKUP_FILE
   tar -czvf bitwardenbackup.tar.gz "$FINAL_BACKUP_FILE.gpg"
   python upload.py
+  rm "$FINAL_BACKUP_FILE.gpg"
   if [ $? -eq 0 ]
   then 
      echo "$(date "+%F %T") - Upload to Exoscale Successful." 
