@@ -1,8 +1,14 @@
-# bitwarden_rs Backup
+# Encrypted bitwarden_rs Backup to Cloud
 Docker Containers for [bitwarden_rs](https://github.com/dani-garcia/bitwarden_rs) Backup.
 
 ## Usage
 The default tag `latest` should be used for a x86-64 system. If you try to run the container on a raspberry pi 3 you should use the tag `rpi3`. Also make sure that your **bitwarden_rs container is named `bitwarden`** otherwise you have to replace the container name in the `--volumes-from` section of the `docker run` call.
+
+### Recovering from the backup
+Download the file, extract the tar.gz file and run the following command to decrypt:
+```sh
+gpg -o backup.sqlite3 -d --pinentry-mode=loopback --passphrase "<PASSPHRASE_THAT_YOU_USED>" backup.sqlite3_<timestamp>.gpg
+```
 
 ### Automatic Backups 
 A cron daemon is running inside the container and the container keeps running in background.
